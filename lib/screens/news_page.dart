@@ -75,7 +75,11 @@ class _NewsPageState extends State<NewsPage> {
                     padding: EdgeInsets.all(10),
                     child: GestureDetector(
                       onTap: () {
-                        Navigator.pushNamed(context, PlayerPage.id);
+                        Navigator.pushNamed(context, PlayerPage.id, arguments: {
+                          'channels': newsChannels,
+                          'channelName': newsChannels[itemIndex]['channel_name'],
+                          'channelUrl': newsChannels[itemIndex]['channel_url']
+                        });
                       },
                       child: Material(
                           elevation: 4.0,

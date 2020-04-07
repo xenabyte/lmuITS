@@ -73,7 +73,11 @@ class _SermonsPageState extends State<SermonsPage> {
                     padding: EdgeInsets.all(10),
                     child: GestureDetector(
                       onTap: () {
-                        Navigator.pushNamed(context, PlayerPage.id);
+                        Navigator.pushNamed(context, PlayerPage.id, arguments: {
+                          'channels': christiansChannels,
+                          'channelName': christiansChannels[itemIndex]['channel_name'],
+                          'channelUrl': christiansChannels[itemIndex]['channel_url']
+                        });
                       },
                       child: Material(
                           elevation: 4.0,

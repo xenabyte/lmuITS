@@ -74,7 +74,11 @@ class _MoviesPageState extends State<MoviesPage> {
                         padding: EdgeInsets.all(10),
                         child: GestureDetector(
                           onTap: () {
-                            Navigator.pushNamed(context, PlayerPage.id);
+                            Navigator.pushNamed(context, PlayerPage.id, arguments: {
+                              'channels': moviesChannels,
+                              'channelName': moviesChannels[itemIndex]['channel_name'],
+                              'channelUrl': moviesChannels[itemIndex]['channel_url']
+                            });
                           },
                           child: Material(
                             elevation: 4.0,

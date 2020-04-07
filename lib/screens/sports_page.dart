@@ -41,7 +41,7 @@ class _SportsPageState extends State<SportsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Documentary Channels'),
+        title: Text('Sports Channels'),
         backgroundColor: Color(0xFF3E793A),
       ),
       body: Container(
@@ -75,7 +75,11 @@ class _SportsPageState extends State<SportsPage> {
                         padding: EdgeInsets.all(10),
                         child: GestureDetector(
                           onTap: () {
-                            Navigator.pushNamed(context, PlayerPage.id);
+                            Navigator.pushNamed(context, PlayerPage.id, arguments: {
+                              'channels': sportsChannels,
+                              'channelName': sportsChannels[itemIndex]['channel_name'],
+                              'channelUrl': sportsChannels[itemIndex]['channel_url']
+                            });
                           },
                           child: Material(
                             elevation: 4.0,

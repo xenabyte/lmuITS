@@ -73,7 +73,11 @@ class _DocumentaryPageState extends State<DocumentaryPage> {
                     padding: EdgeInsets.all(10),
                     child: GestureDetector(
                       onTap: () {
-                        Navigator.pushNamed(context, PlayerPage.id);
+                        Navigator.pushNamed(context, PlayerPage.id, arguments: {
+                          'channels': documentaryChannels,
+                          'channelName': documentaryChannels[itemIndex]['channel_name'],
+                          'channelUrl': documentaryChannels[itemIndex]['channel_url']
+                        });
                       },
                       child: Material(
                           elevation: 4.0,
