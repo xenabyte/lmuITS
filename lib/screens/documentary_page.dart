@@ -40,6 +40,7 @@ class _DocumentaryPageState extends State<DocumentaryPage> {
 
   @override
   Widget build(BuildContext context) {
+    Orientation orientation = MediaQuery.of(context).orientation;
     return Scaffold(
         appBar: AppBar(
           title: Text('Documentary Channels'),
@@ -59,7 +60,7 @@ class _DocumentaryPageState extends State<DocumentaryPage> {
                 itemCount: documentaryChannels.length,
                 autoPlay: true,
                 initialPage: 1,
-                height: 600,
+                height: orientation == Orientation.portrait ? 600 : 250,
                 viewportFraction: 0.8,
                 pauseAutoPlayOnTouch: Duration(seconds: 10),
                 enlargeCenterPage: true,

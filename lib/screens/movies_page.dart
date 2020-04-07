@@ -38,6 +38,7 @@ class _MoviesPageState extends State<MoviesPage> {
 
   @override
   Widget build(BuildContext context) {
+    Orientation orientation = MediaQuery.of(context).orientation;
     return Scaffold(
       appBar: AppBar(
         title: Text('Movies Channels'),
@@ -59,7 +60,7 @@ class _MoviesPageState extends State<MoviesPage> {
                     itemCount: moviesChannels.length,
                     autoPlay: true,
                     initialPage: 1,
-                    height: 600,
+                    height: orientation == Orientation.portrait ? 600 : 250,
                     viewportFraction: 0.8,
                     pauseAutoPlayOnTouch: Duration(seconds: 10),
                     enlargeCenterPage: true,

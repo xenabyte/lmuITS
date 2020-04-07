@@ -1,5 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_simple_video_player/flutter_simple_video_player.dart';
 import 'package:lmuits/constants.dart';
 
@@ -32,10 +34,12 @@ class _PlayerPageState extends State<PlayerPage> {
 
   @override
   Widget build(BuildContext context) {
+    Orientation orientation = MediaQuery.of(context).orientation;
     fetchUI();
     return Scaffold(
         appBar: AppBar(
           title: Text(channelName),
+          backgroundColor: Color(0xFF3E793A),
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -43,7 +47,7 @@ class _PlayerPageState extends State<PlayerPage> {
           children: <Widget>[
             Container(
               height: 300,
-              child: SimpleViewPlayer(channelUrl, isFullScreen: false,),
+              child: SimpleViewPlayer(channelUrl, isFullScreen: false),
             ),
             SizedBox(
               height: 20,
@@ -52,6 +56,7 @@ class _PlayerPageState extends State<PlayerPage> {
                 color: Colors.teal.shade400,
               ),
             ),
+            orientation == Orientation.portrait ?
             CarouselSlider.builder(
               itemCount: channels.length,
               autoPlay: true,
@@ -102,7 +107,10 @@ class _PlayerPageState extends State<PlayerPage> {
                   ),
                 ),
               ),
-            )
+            )  :
+            SizedBox(
+              height: 5,
+            ),
           ],
         )
     );
